@@ -14,7 +14,7 @@ CREATE TABLE plants (
     plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     plant_name  VARCHAR(256) NOT NULL,
     plant_desc  VARCHAR(256)NOT NULL,
-    sci_name VARCHAR(256)
+    sci_name VARCHAR(256),
     plant_img TEXT NOT NULL
 )
 
