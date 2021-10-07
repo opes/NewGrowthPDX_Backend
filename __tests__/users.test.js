@@ -13,6 +13,7 @@ describe('tests all user routes', () => {
   afterAll(() => {
     return pool.end();
   });
+
   it('should signup a user', () => {
     return request(app)
       .post('/auth/signup')
