@@ -11,11 +11,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE plants (
-    plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    plant_name  VARCHAR(256) NOT NULL,
-    plant_desc  VARCHAR(256)NOT NULL,
-    sci_name VARCHAR(256),
-    plant_img TEXT NOT NULL
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name  VARCHAR(256) NOT NULL,
+    description TEXT NOT NULL,
+    scientific_name VARCHAR(256),
+    image TEXT NOT NULL
 );
 
 CREATE TABLE greenhouse (
@@ -26,6 +26,7 @@ CREATE TABLE greenhouse (
 );
 
 CREATE TABLE categories (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL
 );
 
