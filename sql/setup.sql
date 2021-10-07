@@ -6,16 +6,22 @@ DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     username VARCHAR(256) NOT NULL,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL
+);
+
+CREATE TABLE categories (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT
 );
 
 CREATE TABLE plants (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name VARCHAR(256) NOT NULL,
+    plant_name TEXT NOT NULL,
     description TEXT NOT NULL,
     scientific_name VARCHAR(256),
-    image TEXT NOT NULL
+    image TEXT NOT NULL,
+    category_id BIGINT REFERENCES categories(id)
 );
 
 CREATE TABLE greenhouse (
@@ -23,11 +29,6 @@ CREATE TABLE greenhouse (
     users_id BIGINT REFERENCES users(id),
     plants_id BIGINT REFERENCES plants(id),
     on_market BOOLEAN NOT NULL
-);
-
-CREATE TABLE categories (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name TEXT NOT NULL
 );
 
 

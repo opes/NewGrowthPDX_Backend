@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 const pool = require('../lib/utils/pool.js');
 const setup = require('../data/setup.js');
 const request = require('supertest');
 const app = require('../lib/app.js');
-// const User = require('../lib/models/User.js');
-// const agent = request.agent(app);
+
+const agent = request.agent(app);
 
 describe('tests all user routes', () => {
   beforeAll(() => {
@@ -25,5 +27,17 @@ describe('tests all user routes', () => {
           email: 'testuser@gmail.com',
         });
       });
+  });
+
+  it('should login a user', async () => {
+    const res = await agent.post('/auth/login').send({
+      email: 'testuser@gmail.com',
+      password: 'qwerty',
+    });
+    expect(res.body).toEqual({
+      id: '1',
+      username: 'testuser',
+      email: 'testuser@gmail.com',
+    });
   });
 });
