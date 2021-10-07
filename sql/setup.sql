@@ -27,6 +27,6 @@ CREATE TABLE greenhouse (
 
 CREATE TABLE categories (
     name TEXT NOT NULL
-)
+);
 
 
