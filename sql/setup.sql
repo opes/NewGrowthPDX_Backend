@@ -12,16 +12,16 @@ CREATE TABLE users (
 
 CREATE TABLE plants (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name  VARCHAR(256) NOT NULL,
+    name VARCHAR(256) NOT NULL,
     description TEXT NOT NULL,
     scientific_name VARCHAR(256),
     image TEXT NOT NULL
 );
 
 CREATE TABLE greenhouse (
-    user_plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     users_id BIGINT REFERENCES users(id),
-    plant_id BIGINT REFERENCES plants(plant_id),
+    plants_id BIGINT REFERENCES plants(id),
     on_market BOOLEAN NOT NULL
 );
 
