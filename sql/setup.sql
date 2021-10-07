@@ -16,17 +16,17 @@ CREATE TABLE plants (
     plant_desc  VARCHAR(256)NOT NULL,
     sci_name VARCHAR(256),
     plant_img TEXT NOT NULL
-)
+);
 
 CREATE TABLE greenhouse (
     user_plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     users_id BIGINT REFERENCES users(id),
     plant_id BIGINT REFERENCES plants(plant_id),
     on_market BOOLEAN NOT NULL
-)
+);
 
 CREATE TABLE categories (
     name TEXT NOT NULL
-)
+);
 
 
