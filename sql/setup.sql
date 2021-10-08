@@ -21,7 +21,8 @@ CREATE TABLE plants (
     description TEXT NOT NULL,
     scientific_name VARCHAR(256),
     image TEXT NOT NULL,
-    category_id BIGINT REFERENCES categories(id)
+    category_id BIGINT REFERENCES categories(id),
+    users_id BIGINT REFERENCES users(id)
 );
 
 CREATE TABLE greenhouse (
