@@ -67,7 +67,6 @@ describe('tests all user routes', () => {
 
     const plant = await Plant.insert({
       ...fern,
-      userID: user.body.id,
     });
     
     const updatedPlant = await updatePlantById(plant.id, updatedFern);
