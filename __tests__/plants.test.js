@@ -15,7 +15,7 @@ describe('tests all user routes', () => {
     return pool.end();
   });
 
-  it('should create a single plant via POST', async () => {
+  it('creates a single plant via POST', async () => {
     await agent.post('/auth/signup').send({
       username: 'testuser',
       email: 'testuser@gmail.com',
@@ -69,6 +69,20 @@ describe('tests all user routes', () => {
         expect(res.body).toEqual([monstera, fern, begonia]);
   
   });
+
+  it('gets plant by ID', async () => {
+    const monstera = await Plant.insert({
+      plant_name: 'Monstera',
+      description: 'green',
+      scientific_name: '',
+      image: 'monstera.jpg',
+      category_id: null,
+    })
+
+    const res = await request(app).get(`/api/v1/plants/${monstera.id}`);
+
+    expect(res.body).toEqual(monstera);
+  })
 
 
 });
