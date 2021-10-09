@@ -36,7 +36,7 @@ describe('tests all user routes', () => {
   });
 
   it('should login a user', async () => {
- 
+
     const res = await agent.post('/auth/login').send({
       email: 'testuser@gmail.com',
       password: 'qwerty',
@@ -71,18 +71,42 @@ describe('tests all user routes', () => {
       category_id: null,
       userId: user.body.id
     };
-    
+
     const plant = await Plant.insert(
       fern,
     );
 
-    console.log(user.body, 'user');
     const updatedPlant = await updatePlantById(plant.id, user.body.id, updatedFern);
 
     expect(updatedPlant).toEqual({
       id: plant.id,
       userId: user.body.id,
       ...updatedFern,
+    });
+  });
+
+  it('deletes a plant record', async () => {
+    const user = await agent.post('/auth/login').send({
+      email: 'testuser@gmail.com',
+      password: 'qwerty',
+    });
+
+    const fern = {
+      plant_name: 'Fern',
+      description: 'fernie-sanders',
+      scientific_name: '',
+      image: 'fern.jpg',
+      category_id: null,
+      userId: user.body.id
+    };
+
+    const plant = await Plant.insert(
+      fern,
+    );
+
+    const res = await agent.delete(`/api/v1/plants/${plant.id}`);
+    expect(res.body).toEqual({
+      message: `${plant.id} was deleted`,
     });
   });
 });
