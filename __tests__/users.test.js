@@ -21,7 +21,11 @@ describe('tests all user routes', () => {
   it('should signup a user', () => {
     return request(app)
       .post('/auth/signup')
-      .send({ username: 'testuser', email: 'testuser@gmail.com', password: 'qwerty' })
+      .send({
+        username: 'testuser',
+        email: 'testuser@gmail.com',
+        password: 'qwerty',
+      })
       .then((res) => {
         expect(res.body).toEqual({
           id: '1',
@@ -32,6 +36,7 @@ describe('tests all user routes', () => {
   });
 
   it('should login a user', async () => {
+ 
     const res = await agent.post('/auth/login').send({
       email: 'testuser@gmail.com',
       password: 'qwerty',
@@ -55,6 +60,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
+      userId: user.body.id
     };
 
     const updatedFern = {
@@ -63,17 +69,20 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
+      userId: user.body.id
     };
-
-    const plant = await Plant.insert({
-      ...fern,
-    });
     
-    const updatedPlant = await updatePlantById(plant.id, updatedFern);
-  
-      expect(updatedPlant).toEqual({
-        id: plant.id,
-        ...updatedFern,
-      })
-  })
+    const plant = await Plant.insert(
+      fern,
+    );
+
+    console.log(user.body, 'user');
+    const updatedPlant = await updatePlantById(plant.id, user.body.id, updatedFern);
+
+    expect(updatedPlant).toEqual({
+      id: plant.id,
+      userId: user.body.id,
+      ...updatedFern,
+    });
+  });
 });

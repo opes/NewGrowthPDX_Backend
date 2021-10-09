@@ -22,7 +22,7 @@ describe('tests all user routes', () => {
       password: 'qwerty',
     });
 
-    await agent.post('/auth/login').send({
+    const user = await agent.post('/auth/login').send({
       email: 'testuser@gmail.com',
       password: 'qwerty',
     });
@@ -32,6 +32,7 @@ describe('tests all user routes', () => {
       plant_name: 'monstera',
       scientific_name: '',
       image: 'http://cloudinary.com',
+      userId: user.body.id,
     };
 
     const res = await agent.post('/api/v1/plants').send(plant);
@@ -39,7 +40,7 @@ describe('tests all user routes', () => {
     expect(res.body).toEqual({
       id: '1',
       ...plant,
-      category_id: null
+      category_id: null,
     });
   });
 
@@ -50,24 +51,23 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'monstera.jpg',
       category_id: null,
-    })
+    });
     const fern = await Plant.insert({
       plant_name: 'Fern',
       description: 'fernie-sanders',
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
-    })
+    });
     const begonia = await Plant.insert({
       plant_name: 'Begonia',
       description: 'The Dead loves this flower',
       scientific_name: '',
       image: 'begonia.jpg',
       category_id: null,
-    })
+    });
     const res = await request(app).get('/api/v1/plants/');
-        expect(res.body).toEqual([monstera, fern, begonia]);
-  
+    expect(res.body).toEqual([monstera, fern, begonia]);
   });
 
   it('gets plant by ID', async () => {
@@ -77,15 +77,10 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'monstera.jpg',
       category_id: null,
-    })
+    });
 
     const res = await request(app).get(`/api/v1/plants/${monstera.id}`);
 
     expect(res.body).toEqual(monstera);
-  })
-
-
-
-
+  });
 });
-
