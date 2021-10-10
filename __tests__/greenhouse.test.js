@@ -15,46 +15,48 @@ describe('test greenhouse', () => {
   });
 
   it('getting a users greenhouse', async () => {
-      const user = await request(app).post('/auth/signup').send({
-          email: 'joe@johndoh.com',
-          password: 'qwerty',
-          username: 'SomeDude',
-    })
-    
-      await Agent.post('/auth/login').send({
-        email: 'joe@johndoh.com',
-        password: 'qwerty',
+    await request(app).post('/auth/signup').send({
+      email: 'joe@johndoh.com',
+      password: 'qwerty',
+      username: 'SomeDude',
     });
 
-      console.log('LOOK HERE DUMBIES', user.body);
+    const user = await Agent.post('/auth/login').send({
+      email: 'joe@johndoh.com',
+      password: 'qwerty',
+    });
 
-      const plant1 = await Plant.insert({
-        plant_name: 'Tulip',
-        description: 'red',
-        scientific_name: '',
-        image: 'tulip.jpg',
-        category_id: '1',
-        userId: user.body.id,
-      });
-      const plant2 = await Plant.insert({
-        plant_name: 'Sunflower',
-        description: 'sunflower',
-        scientific_name: '',
-        image: 'sunflower.jpg',
-        category_id: '4',
-        userId: user.body.id,
-      });
-      const plant3 = await Plant.insert({
-        plant_name: 'Carnation',
-        description: 'The Dead loves this flower',
-        scientific_name: '',
-        image: 'carnation.jpg',
-        category_id: '1',
-        userId: user.body.id,
-      });
+    console.log('LOOK HERE DUMBIES', user.body.id);
 
-      const response = await request(app).get(`/api/v1/greenhouse/${user.body.id}`);
-      expect(response.body).toEqual({ plant1, plant2, plant3 });
+    const plant1 = await Plant.insert({
+      plant_name: 'Tulip',
+      description: 'red',
+      scientific_name: '',
+      image: 'tulip.jpg',
+      category_id: '1',
+      userId: user.body.id,
+    });
+    const plant2 = await Plant.insert({
+      plant_name: 'Sunflower',
+      description: 'sunflower',
+      scientific_name: '',
+      image: 'sunflower.jpg',
+      category_id: '4',
+      userId: user.body.id,
+    });
+    const plant3 = await Plant.insert({
+      plant_name: 'Carnation',
+      description: 'The Dead loves this flower',
+      scientific_name: '',
+      image: 'carnation.jpg',
+      category_id: '1',
+      userId: user.body.id,
+    });
 
- });
+    const response = await request(app).get(
+      `/api/v1/greenhouse/${user.body.id}`
+    );
+    console.log(`${user.body.id}`);
+    expect(response).toEqual({ plant1, plant2, plant3 });
+  });
 });
