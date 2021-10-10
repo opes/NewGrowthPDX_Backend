@@ -56,7 +56,6 @@ describe('test greenhouse', () => {
     const response = await request(app).get(
       `/api/v1/greenhouse/${user.body.id}`
     );
-    console.log(`${user.body.id}`);
-    expect(response).toEqual({ plant1, plant2, plant3 });
+    expect(response.body).toEqual({ plant1, plant2, plant3 });
   });
 });
