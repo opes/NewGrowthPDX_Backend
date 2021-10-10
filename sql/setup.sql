@@ -32,4 +32,18 @@ CREATE TABLE greenhouse (
     on_market BOOLEAN NOT NULL
 );
 
+INSERT INTO categories (name)
+VALUES ('Tropical');
+
+INSERT INTO categories (name)
+VALUES ('Succulent');
+
+INSERT INTO categories (name)
+VALUES ('Tree');
+
+INSERT INTO categories (name)
+VALUES ('Fern');
+
+INSERT INTO categories (name)
+VALUES ('Bromeliads');
 
