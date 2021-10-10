@@ -50,21 +50,21 @@ describe('tests all user routes', () => {
       description: 'green',
       scientific_name: '',
       image: 'monstera.jpg',
-      category_id: null,
+      category_id: '1',
     });
     const fern = await Plant.insert({
       plant_name: 'Fern',
       description: 'fernie-sanders',
       scientific_name: '',
       image: 'fern.jpg',
-      category_id: null,
+      category_id: '4',
     });
     const begonia = await Plant.insert({
       plant_name: 'Begonia',
       description: 'The Dead loves this flower',
       scientific_name: '',
       image: 'begonia.jpg',
-      category_id: null,
+      category_id: '1',
     });
     const res = await request(app).get('/api/v1/plants/');
     expect(res.body).toEqual([monstera, fern, begonia]);
@@ -76,7 +76,7 @@ describe('tests all user routes', () => {
       description: 'green',
       scientific_name: '',
       image: 'monstera.jpg',
-      category_id: null,
+      category_id: '1',
     });
 
     const res = await request(app).get(`/api/v1/plants/${monstera.id}`);

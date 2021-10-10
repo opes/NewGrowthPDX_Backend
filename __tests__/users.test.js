@@ -58,7 +58,7 @@ describe('tests all user routes', () => {
       description: 'fernie-sanders',
       scientific_name: '',
       image: 'fern.jpg',
-      category_id: null,
+      category_id: '4',
       userId: user.body.id,
     };
 
@@ -67,7 +67,7 @@ describe('tests all user routes', () => {
       description: 'a plant for the people',
       scientific_name: '',
       image: 'fern.jpg',
-      category_id: null,
+      category_id: '4',
       userId: user.body.id,
     };
 
@@ -97,7 +97,7 @@ describe('tests all user routes', () => {
       description: 'fernie-sanders',
       scientific_name: '',
       image: 'fern.jpg',
-      category_id: null,
+      category_id: '4',
       userId: user.body.id,
     };
 
@@ -116,7 +116,7 @@ describe('tests all user routes', () => {
     });
 
     const res = await agent.get('/auth/logout');
-    console.log('yoooo', res.body);
+   
 
     expect(res.body).toEqual({
       message: 'you have logged out',
