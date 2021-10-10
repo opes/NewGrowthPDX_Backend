@@ -36,7 +36,6 @@ describe('tests all user routes', () => {
   });
 
   it('should login a user', async () => {
-
     const res = await agent.post('/auth/login').send({
       email: 'testuser@gmail.com',
       password: 'qwerty',
@@ -60,7 +59,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
-      userId: user.body.id
+      userId: user.body.id,
     };
 
     const updatedFern = {
@@ -69,14 +68,16 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
-      userId: user.body.id
+      userId: user.body.id,
     };
 
-    const plant = await Plant.insert(
-      fern,
-    );
+    const plant = await Plant.insert(fern);
 
-    const updatedPlant = await updatePlantById(plant.id, user.body.id, updatedFern);
+    const updatedPlant = await updatePlantById(
+      plant.id,
+      user.body.id,
+      updatedFern
+    );
 
     expect(updatedPlant).toEqual({
       id: plant.id,
@@ -97,16 +98,28 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: null,
-      userId: user.body.id
+      userId: user.body.id,
     };
 
-    const plant = await Plant.insert(
-      fern,
-    );
+    const plant = await Plant.insert(fern);
 
     const res = await agent.delete(`/api/v1/plants/${plant.id}`);
     expect(res.body).toEqual({
       message: `${plant.id} was deleted`,
+    });
+  });
+
+  it('logs out a user', async () => {
+    await agent.post('/auth/login').send({
+      email: 'testuser@gmail.com',
+      password: 'qwerty',
+    });
+
+    const res = await agent.get('/auth/logout');
+    console.log('yoooo', res.body);
+
+    expect(res.body).toEqual({
+      message: 'you have logged out',
     });
   });
 });
