@@ -22,15 +22,10 @@ CREATE TABLE plants (
     scientific_name VARCHAR(256),
     image TEXT NOT NULL,
     category_id BIGINT REFERENCES categories(id),
-    users_id BIGINT REFERENCES users(id)
+    users_id BIGINT REFERENCES users(id),
+    on_market BOOLEAN 
 );
 
-CREATE TABLE greenhouse (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    users_id BIGINT REFERENCES users(id),
-    plants_id BIGINT REFERENCES plants(id),
-    on_market BOOLEAN NOT NULL
-);
 
 INSERT INTO categories (name)
 VALUES ('Tropical');

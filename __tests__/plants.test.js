@@ -33,14 +33,16 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'http://cloudinary.com',
       userId: user.body.id,
+      category_id: '2',
     };
 
     const res = await agent.post('/api/v1/plants').send(plant);
 
     expect(res.body).toEqual({
+      
       id: '1',
       ...plant,
-      category_id: null,
+      category_id: '2',
     });
   });
 
