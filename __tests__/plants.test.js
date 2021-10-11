@@ -90,4 +90,52 @@ describe('tests all user routes', () => {
 
     expect(res.body).toEqual(monstera);
   });
+
+  it('gets plants by on_market', async () => {
+
+    await agent.post('/auth/signup').send({
+      username: 'testuser2',
+      email: 'testuser2@gmail.com',
+      password: 'qwerty',
+    });
+
+    const user = await agent.post('/auth/login').send({
+      email: 'testuser2@gmail.com',
+      password: 'qwerty',
+    });
+
+    const monsteraOnMarket = await Plant.insert({
+      plant_name: 'Monstera',
+      description: 'green',
+      scientific_name: '',
+      image: 'monstera.jpg',
+      category_id: '1',
+      userId: user.body.id,
+      on_market: true,
+    });
+    const catusOffMarket = await Plant.insert({
+      plant_name: 'Monstera',
+      description: 'green',
+      scientific_name: '',
+      image: 'monstera.jpg',
+      category_id: '1',
+      userId: user.body.id,
+      on_market: false,
+    });
+    const fernOnMarket = await Plant.insert({
+      plant_name: 'fern',
+      description: 'green',
+      scientific_name: '',
+      image: 'fern.jpg',
+      category_id: '1',
+      userId: user.body.id,
+      on_market: true,
+    });
+
+    const res = await Plant.getByOnMarket();
+
+    expect(res).toEqual([monsteraOnMarket, fernOnMarket]);
+
+
+  });
 });
