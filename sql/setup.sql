@@ -41,4 +41,3 @@ VALUES ('Fern');
 
 INSERT INTO categories (name)
 VALUES ('Bromeliads');
-
