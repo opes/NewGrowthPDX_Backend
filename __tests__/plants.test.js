@@ -34,6 +34,7 @@ describe('tests all user routes', () => {
       image: 'http://cloudinary.com',
       userId: user.body.id,
       category_id: '2',
+      on_market: true,
     };
 
     const res = await agent.post('/api/v1/plants').send(plant);
@@ -53,6 +54,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'monstera.jpg',
       category_id: '1',
+      on_market: true,
     });
     const fern = await Plant.insert({
       plant_name: 'Fern',
@@ -60,6 +62,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: '4',
+      on_market: true,
     });
     const begonia = await Plant.insert({
       plant_name: 'Begonia',
@@ -67,6 +70,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'begonia.jpg',
       category_id: '1',
+      on_market: true,
     });
     const res = await request(app).get('/api/v1/plants/');
     expect(res.body).toEqual([monstera, fern, begonia]);
@@ -79,6 +83,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'monstera.jpg',
       category_id: '1',
+      on_market: true,
     });
 
     const res = await request(app).get(`/api/v1/plants/${monstera.id}`);

@@ -23,7 +23,7 @@ CREATE TABLE plants (
     image TEXT NOT NULL,
     category_id BIGINT REFERENCES categories(id),
     users_id BIGINT REFERENCES users(id),
-    on_market BOOLEAN 
+    on_market BOOLEAN NOT NULL
 );
 
 
