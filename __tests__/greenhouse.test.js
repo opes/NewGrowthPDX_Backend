@@ -32,6 +32,7 @@ describe('test greenhouse', () => {
       scientific_name: '',
       image: 'tulip.jpg',
       category_id: '4',
+      on_market: true,
       userId: user.body.id,
     };
     const plant2 = {
@@ -40,6 +41,7 @@ describe('test greenhouse', () => {
       scientific_name: '',
       image: 'sunflower.jpg',
       category_id: '4',
+      on_market: true,
       userId: user.body.id,
     };
     const plant3 = {
@@ -48,6 +50,7 @@ describe('test greenhouse', () => {
       scientific_name: '',
       image: 'rose.jpg',
       category_id: '2',
+      on_market: true,
       userId: user.body.id,
     };
 

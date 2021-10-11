@@ -59,6 +59,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: '4',
+      on_market: true,
       userId: user.body.id,
     };
 
@@ -68,6 +69,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: '4',
+      on_market: false,
       userId: user.body.id,
     };
 
@@ -98,6 +100,7 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'fern.jpg',
       category_id: '4',
+      on_market: true,
       userId: user.body.id,
     };
 
