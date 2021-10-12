@@ -165,6 +165,6 @@ describe('tests all user routes', () => {
 
     const res = await Plant.getByOnMarket();
 
-    expect(res).toEqual([monsteraOnMarket, fernOnMarket]);
+    expect(res).toEqual(expect.arrayContaining([monsteraOnMarket, fernOnMarket]));
   });
 });
