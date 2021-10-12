@@ -47,19 +47,8 @@ describe('tests all user routes', () => {
   });
 
   it('gets all the plants', async () => {
- 
     const monstera = {
       plant_name: 'monstera',
-      description: 'this is a healthy plant',
-      scientific_name: '',
-      image:
-      'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
-      category_id: '1',
-      userId: '1',
-      on_market: true,
-    };
-    const cactus = {
-      plant_name: 'cactus',
       description: 'this is a healthy plant',
       scientific_name: '',
       image:
@@ -67,8 +56,8 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      id: '1',
     };
-
     const aloe = {
       plant_name: 'aloe',
       description: 'this is a healthy plant',
@@ -78,9 +67,11 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      id: '2',
     };
+
     const moneyTree = {
-      plant_name: 'moneyTree',
+      plant_name: 'money tree',
       description: 'this is a healthy plant',
       scientific_name: '',
       image:
@@ -88,6 +79,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      id: '3',
     };
     const fern = {
       plant_name: 'fern',
@@ -98,10 +90,22 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      id: '4',
+    };
+    const cactus = {
+      plant_name: 'cactus',
+      description: 'this is a healthy plant',
+      scientific_name: '',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+      category_id: '1',
+      userId: '1',
+      on_market: true,
+      id: '5',
     };
 
     const res = await request(app).get('/api/v1/plants/');
-    expect(res.body).toEqual([cactus, monstera, aloe, moneyTree, fern]);
+    expect(res.body).toEqual(expect.arrayContaining([aloe, monstera, moneyTree, fern, cactus]));
   });
 
   it('gets plant by ID', async () => {
