@@ -33,6 +33,7 @@ describe('test greenhouse', () => {
       image: 'tulip.jpg',
       category_id: '4',
       on_market: true,
+      price: '$15',
       userId: user.body.id,
     };
     const plant2 = {
@@ -42,6 +43,7 @@ describe('test greenhouse', () => {
       image: 'sunflower.jpg',
       category_id: '4',
       on_market: true,
+      price: '$15',
       userId: user.body.id,
     };
     const plant3 = {
@@ -51,6 +53,7 @@ describe('test greenhouse', () => {
       image: 'rose.jpg',
       category_id: '2',
       on_market: true,
+      price: '$15',
       userId: user.body.id,
     };
 
@@ -60,16 +63,10 @@ describe('test greenhouse', () => {
 
     console.log(resPlant1, resPlant2, resPlant3);
 
-    // await Agent.post('/api/v1/plants').send(plant1);
-    // await Agent.post('/api/v1/plants').send(plant2);
-    // await Agent.post('/api/v1/plants').send(plant3);
 
-    // const response = await request(app).get(
-    //   `/api/v1/greenhouse/${user.body.id}`
-    // );
 
     const response = await Plant.getAllPlantsByUserId(user.body.id);
-    console.log(response, 'look here');
+    
 
     expect(response).toEqual([
       { ...plant1, id: '6' },
