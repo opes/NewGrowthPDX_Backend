@@ -28,7 +28,7 @@ describe('tests all user routes', () => {
       })
       .then((res) => {
         expect(res.body).toEqual({
-          id: '1',
+          id: '2',
           username: 'testuser',
           email: 'testuser@gmail.com',
         });
@@ -41,7 +41,7 @@ describe('tests all user routes', () => {
       password: 'qwerty',
     });
     expect(res.body).toEqual({
-      id: '1',
+      id: '2',
       username: 'testuser',
       email: 'testuser@gmail.com',
     });

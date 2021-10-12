@@ -72,9 +72,9 @@ describe('test greenhouse', () => {
     console.log(response, 'look here');
 
     expect(response).toEqual([
-      { ...plant1, id: '1' },
-      { ...plant2, id: '2' },
-      { ...plant3, id: '3' },
+      { ...plant1, id: '6' },
+      { ...plant2, id: '7' },
+      { ...plant3, id: '8' },
     ]);
   });
 });

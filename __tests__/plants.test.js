@@ -33,47 +33,79 @@ describe('tests all user routes', () => {
       scientific_name: '',
       image: 'http://cloudinary.com',
       userId: user.body.id,
-      category_id: '2',
+      category_id: '1',
       on_market: true,
     };
 
     const res = await agent.post('/api/v1/plants').send(plant);
 
     expect(res.body).toEqual({
-      
-      id: '1',
+      id: '6',
       ...plant,
-      category_id: '2',
+      category_id: '1',
     });
   });
 
   it('gets all the plants', async () => {
-    const monstera = await Plant.insert({
-      plant_name: 'Monstera',
-      description: 'green',
+    const monstera = {
+      plant_name: 'monstera',
+      description: 'this is a healthy plant',
       scientific_name: '',
-      image: 'monstera.jpg',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
+      userId: '1',
       on_market: true,
-    });
-    const fern = await Plant.insert({
-      plant_name: 'Fern',
-      description: 'fernie-sanders',
+      id: '1',
+    };
+    const aloe = {
+      plant_name: 'aloe',
+      description: 'this is a healthy plant',
       scientific_name: '',
-      image: 'fern.jpg',
-      category_id: '4',
-      on_market: true,
-    });
-    const begonia = await Plant.insert({
-      plant_name: 'Begonia',
-      description: 'The Dead loves this flower',
-      scientific_name: '',
-      image: 'begonia.jpg',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
+      userId: '1',
       on_market: true,
-    });
+      id: '2',
+    };
+
+    const moneyTree = {
+      plant_name: 'money tree',
+      description: 'this is a healthy plant',
+      scientific_name: '',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+      category_id: '1',
+      userId: '1',
+      on_market: true,
+      id: '3',
+    };
+    const fern = {
+      plant_name: 'fern',
+      description: 'this is a healthy plant',
+      scientific_name: '',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+      category_id: '1',
+      userId: '1',
+      on_market: true,
+      id: '4',
+    };
+    const cactus = {
+      plant_name: 'cactus',
+      description: 'this is a healthy plant',
+      scientific_name: '',
+      image:
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+      category_id: '1',
+      userId: '1',
+      on_market: true,
+      id: '5',
+    };
+
     const res = await request(app).get('/api/v1/plants/');
-    expect(res.body).toEqual([monstera, fern, begonia]);
+    expect(res.body).toEqual(expect.arrayContaining([aloe, monstera, moneyTree, fern, cactus]));
   });
 
   it('gets plant by ID', async () => {
@@ -92,7 +124,6 @@ describe('tests all user routes', () => {
   });
 
   it('gets plants by on_market', async () => {
-
     await agent.post('/auth/signup').send({
       username: 'testuser2',
       email: 'testuser2@gmail.com',
@@ -134,8 +165,6 @@ describe('tests all user routes', () => {
 
     const res = await Plant.getByOnMarket();
 
-    expect(res).toEqual([monsteraOnMarket, fernOnMarket]);
-
-
+    expect(res).toEqual(expect.arrayContaining([monsteraOnMarket, fernOnMarket]));
   });
 });
