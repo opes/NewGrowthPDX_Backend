@@ -60,6 +60,7 @@ describe('tests all user routes', () => {
       image: 'fern.jpg',
       category_id: '4',
       on_market: true,
+      price: '$15',
       userId: user.body.id,
     };
 
@@ -70,6 +71,7 @@ describe('tests all user routes', () => {
       image: 'fern.jpg',
       category_id: '4',
       on_market: false,
+      price: '$15',
       userId: user.body.id,
     };
 

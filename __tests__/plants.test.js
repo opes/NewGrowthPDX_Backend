@@ -35,6 +35,7 @@ describe('tests all user routes', () => {
       userId: user.body.id,
       category_id: '1',
       on_market: true,
+      price: '$15'
     };
 
     const res = await agent.post('/api/v1/plants').send(plant);
@@ -56,6 +57,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      price: '$15',
       id: '1',
     };
     const aloe = {
@@ -67,6 +69,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      price: '$15',
       id: '2',
     };
 
@@ -79,6 +82,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      price: '$15',
       id: '3',
     };
     const fern = {
@@ -90,6 +94,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      price: '$15',
       id: '4',
     };
     const cactus = {
@@ -101,6 +106,7 @@ describe('tests all user routes', () => {
       category_id: '1',
       userId: '1',
       on_market: true,
+      price: '$15',
       id: '5',
     };
 

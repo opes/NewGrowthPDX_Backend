@@ -23,7 +23,8 @@ CREATE TABLE plants (
     image TEXT NOT NULL,
     category_id BIGINT REFERENCES categories(id),
     users_id BIGINT REFERENCES users(id),
-    on_market BOOLEAN NOT NULL
+    on_market BOOLEAN NOT NULL,
+    price TEXT
 );
 
 INSERT INTO categories (name)
@@ -51,6 +52,7 @@ INSERT INTO plants (
         image,
         category_id,
         users_id,
+        price,
         on_market
     )
 VALUES
@@ -61,6 +63,7 @@ VALUES
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
+        '$15',
         true
     ),
     (
@@ -70,6 +73,7 @@ VALUES
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
+        '$15',
         true
     ),
     (
@@ -79,6 +83,7 @@ VALUES
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
+        '$15',
         true
     ),
     (
@@ -88,6 +93,7 @@ VALUES
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
+        '$15',
         true
     ),
     (
@@ -97,5 +103,6 @@ VALUES
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
+        '$15',
         true
     );
