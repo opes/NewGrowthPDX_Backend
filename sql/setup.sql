@@ -39,8 +39,8 @@ INSERT INTO users (
     password_hash
 )
 VALUES(
-    'testuser',
-    'testuser@gmail.com',
+    'theRealTestUser',
+    'theRealTestUser@gmail.com',
     'pw1234'
 );
 
