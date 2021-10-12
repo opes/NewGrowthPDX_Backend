@@ -26,18 +26,76 @@ CREATE TABLE plants (
     on_market BOOLEAN NOT NULL
 );
 
-
 INSERT INTO categories (name)
-VALUES ('Tropical');
+VALUES ('Tropical'),
+    ('Succulent'),
+    ('Tree'),
+    ('Fern'),
+    ('Bromeliads');
 
-INSERT INTO categories (name)
-VALUES ('Succulent');
+INSERT INTO users (
+    username,
+    email,
+    password_hash
+)
+VALUES(
+    'testuser',
+    'testuser@gmail.com',
+    'pw1234'
+);
 
-INSERT INTO categories (name)
-VALUES ('Tree');
-
-INSERT INTO categories (name)
-VALUES ('Fern');
-
-INSERT INTO categories (name)
-VALUES ('Bromeliads');
+INSERT INTO plants (
+        plant_name,
+        description,
+        scientific_name,
+        image,
+        category_id,
+        users_id,
+        on_market
+    )
+VALUES
+    (
+        'monstera',
+        'this is a healthy plant',
+        '',
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+        '1',
+        '1',
+        true
+    ),
+    (
+        'aloe',
+        'this is a healthy plant',
+        '',
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+        '1',
+        '1',
+        true
+    ),
+    (
+        'money tree',
+        'this is a healthy plant',
+        '',
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+        '1',
+        '1',
+        true
+    ),
+    (
+        'fern',
+        'this is a healthy plant',
+        '',
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+        '1',
+        '1',
+        true
+    ),
+    (
+        'cactus',
+        'this is a healthy plant',
+        '',
+        'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
+        '1',
+        '1',
+        true
+    );
