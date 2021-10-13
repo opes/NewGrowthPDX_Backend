@@ -17,15 +17,17 @@ describe('tests all user routes', () => {
 
   it('creates a single plant via POST', async () => {
     await agent.post('/auth/signup').send({
-      username: 'testuser',
-      email: 'testuser@gmail.com',
+      username: 'testuser2',
+      email: 'testuser2@gmail.com',
       password: 'qwerty',
     });
 
     const user = await agent.post('/auth/login').send({
-      email: 'testuser@gmail.com',
+      email: 'testuser2@gmail.com',
       password: 'qwerty',
     });
+
+    console.log(user.body.id, 'ID');
 
     const plant = {
       description: 'this is a healthy plant',
@@ -38,9 +40,9 @@ describe('tests all user routes', () => {
       price: '$15'
     };
 
-    const res = await agent.post('/api/v1/plants').send(plant);
+    const res = await Plant.insert(plant);
 
-    expect(res.body).toEqual({
+    expect(res).toEqual({
       id: '6',
       ...plant,
       category_id: '1',
