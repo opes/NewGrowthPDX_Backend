@@ -16,16 +16,20 @@ describe('tests all user routes', () => {
   });
 
   it('creates a single plant via POST', async () => {
-    // await agent.post('/auth/signup').send({
-    //   username: 'testuser',
-    //   email: 'testuser@gmail.com',
-    //   password: 'qwerty',
-    // });
 
-    await agent.post('/auth/login').send({
-      email: 'theRealTestUser@gmail.com',
-      password: 'pw1234',
+    await agent.post('/auth/signup').send({
+      username: 'testuser2',
+      email: 'testuser2@gmail.com',
+      password: 'qwerty',
     });
+
+    const user = await agent.post('/auth/login').send({
+      email: 'testuser2@gmail.com',
+      password: 'qwerty',
+      
+    });
+
+    console.log(user.body.id, 'ID');
 
     const plant = {
       description: 'this is a healthy plant',
@@ -38,9 +42,9 @@ describe('tests all user routes', () => {
       price: '$15'
     };
 
-    const res = await agent.post('/api/v1/plants').send(plant);
+    const res = await Plant.insert(plant);
 
-    expect(res.body).toEqual({
+    expect(res).toEqual({
       id: '6',
       ...plant,
       category_id: '1',
@@ -49,64 +53,64 @@ describe('tests all user routes', () => {
 
   it('gets all the plants', async () => {
     const monstera = {
-      plant_name: 'monstera',
-      description: 'this is a healthy plant',
+      plant_name: 'Monstera',
+      description: 'This is a healthy plant',
       scientific_name: '',
       image:
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
       userId: '1',
       on_market: true,
-      price: '$15',
+      price: '15',
       id: '1',
     };
     const aloe = {
-      plant_name: 'aloe',
-      description: 'this is a healthy plant',
+      plant_name: 'Aloe',
+      description: 'This is a healthy plant',
       scientific_name: '',
       image:
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
       userId: '1',
       on_market: true,
-      price: '$15',
+      price: '15',
       id: '2',
     };
 
     const moneyTree = {
-      plant_name: 'money tree',
-      description: 'this is a healthy plant',
+      plant_name: 'Money tree',
+      description: 'This is a healthy plant',
       scientific_name: '',
       image:
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
       userId: '1',
       on_market: true,
-      price: '$15',
+      price: '15',
       id: '3',
     };
     const fern = {
-      plant_name: 'fern',
-      description: 'this is a healthy plant',
+      plant_name: 'Fern',
+      description: 'This is a healthy plant',
       scientific_name: '',
       image:
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
       userId: '1',
       on_market: true,
-      price: '$15',
+      price: '15',
       id: '4',
     };
     const cactus = {
-      plant_name: 'cactus',
-      description: 'this is a healthy plant',
+      plant_name: 'Cactus',
+      description: 'This is a healthy plant',
       scientific_name: '',
       image:
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
       category_id: '1',
       userId: '1',
       on_market: true,
-      price: '$15',
+      price: '15',
       id: '5',
     };
 
