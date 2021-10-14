@@ -16,15 +16,15 @@ describe('tests all user routes', () => {
   });
 
   it('creates a single plant via POST', async () => {
-    await agent.post('/auth/signup').send({
-      username: 'testuser',
-      email: 'testuser@gmail.com',
-      password: 'qwerty',
-    });
+    // await agent.post('/auth/signup').send({
+    //   username: 'testuser',
+    //   email: 'testuser@gmail.com',
+    //   password: 'qwerty',
+    // });
 
-    const user = await agent.post('/auth/login').send({
-      email: 'testuser@gmail.com',
-      password: 'qwerty',
+    await agent.post('/auth/login').send({
+      email: 'theRealTestUser@gmail.com',
+      password: 'pw1234',
     });
 
     const plant = {
