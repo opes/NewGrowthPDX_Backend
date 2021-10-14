@@ -104,13 +104,14 @@ describe('tests all user routes', () => {
       category_id: '4',
       on_market: true,
       userId: user.body.id,
+      id: '7'
     };
 
     const plant = await Plant.insert(fern);
 
-    const res = await agent.delete(`/api/v1/plants/${plant.id}`);
-    expect(res.body).toEqual({
-      message: `${plant.id} was deleted`,
+    const res = await Plant.deletePlantById(fern.id, user.body.id);
+    expect(res).toEqual({
+      ...plant,
     });
   });
 
