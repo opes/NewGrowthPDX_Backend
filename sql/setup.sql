@@ -57,52 +57,52 @@ INSERT INTO plants (
     )
 VALUES
     (
-        'monstera',
-        'this is a healthy plant',
+        'Monstera',
+        'This is a healthy plant',
         '',
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
-        '$15',
+        '15',
         true
     ),
     (
-        'aloe',
-        'this is a healthy plant',
+        'Aloe',
+        'This is a healthy plant',
         '',
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
-        '$15',
+        '15',
         true
     ),
     (
-        'money tree',
-        'this is a healthy plant',
+        'Money tree',
+        'This is a healthy plant',
         '',
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
-        '$15',
+        '15',
         true
     ),
     (
-        'fern',
-        'this is a healthy plant',
+        'Fern',
+        'This is a healthy plant',
         '',
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
-        '$15',
+        '15',
         true
     ),
     (
-        'cactus',
-        'this is a healthy plant',
+        'Cactus',
+        'This is a healthy plant',
         '',
         'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_sansevieria_charcoal-e1633460982733.jpg?ver=279439',
         '1',
         '1',
-        '$15',
+        '15',
         true
     );

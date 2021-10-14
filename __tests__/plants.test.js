@@ -16,6 +16,7 @@ describe('tests all user routes', () => {
   });
 
   it('creates a single plant via POST', async () => {
+
     await agent.post('/auth/signup').send({
       username: 'testuser2',
       email: 'testuser2@gmail.com',
@@ -25,6 +26,7 @@ describe('tests all user routes', () => {
     const user = await agent.post('/auth/login').send({
       email: 'testuser2@gmail.com',
       password: 'qwerty',
+      
     });
 
     console.log(user.body.id, 'ID');
