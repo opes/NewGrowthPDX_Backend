@@ -57,16 +57,11 @@ describe('test greenhouse', () => {
       userId: user.body.id,
     };
 
-    const resPlant1 = await Plant.insert(plant1);
-    const resPlant2 = await Plant.insert(plant2);
-    const resPlant3 = await Plant.insert(plant3);
-
-    console.log(resPlant1, resPlant2, resPlant3);
-
-
+    await Plant.insert(plant1);
+    await Plant.insert(plant2);
+    await Plant.insert(plant3);
 
     const response = await Plant.getAllPlantsByUserId(user.body.id);
-    
 
     expect(response).toEqual([
       { ...plant1, id: '6' },

@@ -34,6 +34,8 @@ VALUES ('Tropical'),
     ('Fern'),
     ('Bromeliads');
 
+-- Consider moving this into data/setup.js to use the same hashing algorithm and
+-- .env variables (for security purposes)
 INSERT INTO users (
     username,
     email,

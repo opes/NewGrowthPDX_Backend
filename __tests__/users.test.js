@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const pool = require('../lib/utils/pool.js');
 const setup = require('../data/setup.js');
 const request = require('supertest');
@@ -122,7 +120,6 @@ describe('tests all user routes', () => {
     });
 
     const res = await agent.get('/auth/logout');
-   
 
     expect(res.body).toEqual({
       message: 'you have logged out',
